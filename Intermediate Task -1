@@ -1,0 +1,27 @@
+'''
+Task 1 AI Chatbot Development
+
+Description: Create an AI chatbot using natural language processing for human interaction. '''
+
+# Code
+
+import random
+
+responses = {
+    "hi": "Hello! How can I assist you today?",
+    "bye": "Goodbye! Have a great day!",
+    "how are you": "I'm an AI, so I don't have feelings, but thanks for asking!",
+}
+
+def chatbot_response(user_input):
+    for key in responses:
+        if key in user_input.lower():
+            return responses[key]
+    return "I'm sorry, I don't understand that."
+
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == 'exit':
+        print("Chatbot: Goodbye!")
+        break
+    print(f"Chatbot: {chatbot_response(user_input)}")
