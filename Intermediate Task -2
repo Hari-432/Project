@@ -1,0 +1,41 @@
+'''
+Task 2 Python Voice Assistant
+
+Description: Create a customizable voice assistant script in Python for performing a wide
+          range of tasks based on user preferences. Harness Python's capabilities for voice interaction and automation. '''
+
+# Code
+
+import pyttsx3
+import speech_recognition as sr
+
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+
+def listen():
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio = recognizer.listen(source)
+    try:
+        command = recognizer.recognize_google(audio)
+        print(f"You said: {command}")
+        return command
+    except sr.UnknownValueError:
+        return "Sorry, I did not understand that."
+    except sr.RequestError:
+        return "Could not request results; check your network connection."
+
+while True:
+    command = listen()
+    if 'exit' in command.lower():
+        speak("Goodbye!")
+        break
+    elif 'hello' in command.lower():
+        speak("Hello! How can I assist you today?")
+    elif 'your name' in command.lower():
+        speak("I am your voice assistant.")
+    else:
+        speak("I am sorry, I don't understand that.")
