@@ -1,0 +1,38 @@
+Task- 1
+Description: Create a Python program for adding, completing, and removing tasks—a simple introduction to Python programming.
+
+#code
+tasks = []
+
+def add_task(task):
+    tasks.append(task)
+    print(f"Added task: {task}")
+
+def complete_task(task):
+    if task in tasks:
+        tasks.remove(task)
+        print(f"Completed task: {task}")
+    else:
+        print(f"Task not found: {task}")
+
+def show_tasks():
+    print("To-Do List:")
+    for task in tasks:
+        print(f"- {task}")
+
+while True:
+    print("\nOptions: add, complete, show, exit")
+    action = input("Choose an action: ").strip().lower()
+    
+    if action == 'add':
+        task = input("Enter a task to add: ")
+        add_task(task)
+    elif action == 'complete':
+        task = input("Enter a task to complete: ")
+        complete_task(task)
+    elif action == 'show':
+        show_tasks()
+    elif action == 'exit':
+        break
+    else:
+        print("Invalid option!")
